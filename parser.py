@@ -35,9 +35,6 @@ def CharIsValide(CharEquation):
     if (CharEquation == '*' or CharEquation == '^' or
         CharEquation == 'x' or CharEquation == 'X'):
         return True
-    else:
-        print ("error: Format string! {}".format(CharEquation))
-        exit()
     return False
 
 def CoreParse(equation, left, right):
@@ -45,6 +42,7 @@ def CoreParse(equation, left, right):
     string = ""
     equal = 0
     while (i < len(equation)):
+        print(equation[i])
         if (equation[i] == '='):
             equal = 1
             i += 1
@@ -53,10 +51,16 @@ def CoreParse(equation, left, right):
             i += 1
         if (equation[i] >= '0' and equation[i] <= '9'):
             while (equation[i] >= '0' and equation[i] <= '9'):
+                print(equation[i])
                 string = string + equation[i]
                 i += 1
-            while (CharIsValide(equation[i])):
-                i += 1
+            if (CharIsValide(equation[i])):
+                while (CharIsValide(equation[i])):
+                    i += 1
+            if (int(string) == 0):
+                print ("error: Format string! {}".format(equation[i]))
+            elif():
+                pass
             if ((equation[i] == '0' or equation[i] == '1' or equation[i] == '2') and equal == 0):
                 if (equation[i] == '0'):
                     left._x0 = float(string)
@@ -71,14 +75,16 @@ def CoreParse(equation, left, right):
             if ((equation[i] == '0' or equation[i] == '1' or equation[i] == '2') and equal == 1):
                 if (equation[i] == '0'):
                     right._x0 = float(string)
-                    print(left._x0)
+                    print(right._x0)
                 if (equation[i] == '1'):
                     right._x1 = float(string)
-                    print(left._x1)
+                    print(right._x1)
                 if (equation[i] == '2'):
                     right._x2 = float(string)
-                    print(left._x2)
+                    print(right._x2)
                 i += 1
+            string = ""
+
     print("[{} {}x {}x^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
 
 def ParseString(EquationString):
