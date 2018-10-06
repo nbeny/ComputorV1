@@ -17,6 +17,7 @@ def main(argv):
     else :
         print("usage:   python ./main.py")
         print("         python ./main.py [equation]")
+        return -1
     ParseString(EquationString)
 
 if __name__ == '__main__':
