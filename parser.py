@@ -20,7 +20,38 @@ def EquationFormatOk(Equation, CharListOk):
             return False
     return True
 
-def CoreParse(left, right):
+def ClearSpace(equation):
+    i = 0
+    Clear = ""
+    while (i != len(equation)):
+        if (equation[i] == ' '):
+            pass
+        else:
+            Clear = Clear + equation[i]
+        i += 1
+    return (equation)
+
+def CoreParse(equation, left, right):
+    i = 0
+    neg = 0
+    string = ""
+    nb = 0
+    while (i < len(equation)):
+        if (equation[i] == ' '):
+            i += 1
+        if (equation[i] == '-'):
+            neg = 1
+            i += 1
+        if (equation[i] >= '0' & equation[i] <= '9'):
+            if (neg == 1):
+                string = "-"
+            while (equation[i] >= '0' & equation[i] <= '9'):
+                string = string + equation[i]
+                i += 1
+            nb = 1
+        if (equation[i] == '*'):
+            i += 1
+        
     pass
 
 def ParseString(EquationString):
@@ -30,7 +61,8 @@ def ParseString(EquationString):
             print("Start identifier!")
             left = Left()
             right = Right()
-            CoreParse(left, right)
+#            equation = ClearSpace(EquationString.string)
+            CoreParse(EquationString.string, left, right)
     else :
         print ("Error:  Equation parse: no good character in string enter.")
         print ("        Please use only '0123456789/*-+= ^xX'")
