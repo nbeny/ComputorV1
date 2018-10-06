@@ -29,40 +29,68 @@ def ClearSpace(equation):
         else:
             Clear = Clear + equation[i]
         i += 1
-    return (equation)
+    return (Clear)
+
+def CharIsValide(CharEquation):
+    if (CharEquation == '*' or CharEquation == '^' or
+        CharEquation == 'x' or CharEquation == 'X'):
+        return True
+    else:
+        print ("error: Format string! {}".format(CharEquation))
+        exit()
+    return False
 
 def CoreParse(equation, left, right):
     i = 0
-    neg = 0
     string = ""
-    nb = 0
+    equal = 0
     while (i < len(equation)):
-        if (equation[i] == ' '):
+        if (equation[i] == '='):
+            equal = 1
             i += 1
         if (equation[i] == '-'):
-            neg = 1
+            string = "-"
             i += 1
-        if (equation[i] >= '0' & equation[i] <= '9'):
-            if (neg == 1):
-                string = "-"
-            while (equation[i] >= '0' & equation[i] <= '9'):
+        if (equation[i] >= '0' and equation[i] <= '9'):
+            while (equation[i] >= '0' and equation[i] <= '9'):
                 string = string + equation[i]
                 i += 1
-            nb = 1
-        if (equation[i] == '*'):
-            i += 1
-        
-    pass
+            while (CharIsValide(equation[i])):
+                i += 1
+            if ((equation[i] == '0' or equation[i] == '1' or equation[i] == '2') and equal == 0):
+                if (equation[i] == '0'):
+                    left._x0 = float(string)
+                    print(left._x0)
+                if (equation[i] == '1'):
+                    left._x1 = float(string)
+                    print(left._x1)
+                if (equation[i] == '2'):
+                    left._x2 = float(string)
+                    print(left._x2)
+                i += 1
+            if ((equation[i] == '0' or equation[i] == '1' or equation[i] == '2') and equal == 1):
+                if (equation[i] == '0'):
+                    right._x0 = float(string)
+                    print(left._x0)
+                if (equation[i] == '1'):
+                    right._x1 = float(string)
+                    print(left._x1)
+                if (equation[i] == '2'):
+                    right._x2 = float(string)
+                    print(left._x2)
+                i += 1
+    print("[{} {}x {}x^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
 
 def ParseString(EquationString):
     print("Start Parcer! {}".format(EquationString.string))
     if (EquationFormatOk(EquationString.string, EquationString.charListOk)):
-            print("String have the good format.")
-            print("Start identifier!")
-            left = Left()
-            right = Right()
-#            equation = ClearSpace(EquationString.string)
-            CoreParse(EquationString.string, left, right)
+        print("String have the good format.")
+        print("Start identifier!")
+        left = Left()
+        right = Right()
+        equation = ClearSpace(EquationString.string)
+        print(equation)
+        CoreParse(equation, left, right)
     else :
         print ("Error:  Equation parse: no good character in string enter.")
         print ("        Please use only '0123456789/*-+= ^xX'")
