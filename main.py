@@ -2,6 +2,8 @@
 
 from sys import argv
 from equation import Equation
+from parser import ParseString
+
 
 def main(argv):
     EquationString = Equation()
@@ -15,6 +17,7 @@ def main(argv):
     else :
         print("usage:   python ./main.py")
         print("         python ./main.py [equation]")
+    ParseString(EquationString)
 
 if __name__ == '__main__':
     main(argv)
