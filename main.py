@@ -4,7 +4,6 @@ from sys import argv
 from equation import Equation
 from parser import ParseString
 
-
 def main(argv):
     EquationString = Equation()
 
@@ -20,5 +19,5 @@ def main(argv):
         return -1
     ParseString(EquationString)
 
-if __name__ == '__main__':
+if  __name__ == '__main__':
     main(argv)

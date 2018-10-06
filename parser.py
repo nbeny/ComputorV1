@@ -1,5 +1,8 @@
 #!/env/bin/python3
 
+from left import Left
+from right import Right
+
 def CharFormatOk(CharString, CharListOk):
     i = 0
     while (i < len(CharListOk)):
@@ -17,11 +20,17 @@ def EquationFormatOk(Equation, CharListOk):
             return False
     return True
 
+def CoreParse(left, right):
+    pass
+
 def ParseString(EquationString):
     print("Start Parcer! {}".format(EquationString.string))
     if (EquationFormatOk(EquationString.string, EquationString.charListOk)):
             print("String have the good format.")
             print("Start identifier!")
+            left = Left()
+            right = Right()
+            CoreParse(left, right)
     else :
         print ("Error:  Equation parse: no good character in string enter.")
         print ("        Please use only '0123456789/*-+= ^xX'")
