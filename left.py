@@ -9,8 +9,8 @@ class Left:
     @property
     def _X0(self):
         """I'm the 'String' property."""
-
         return self._x0
+    
     @property
     def _X1(self):
         """I'm the 'String' property."""
