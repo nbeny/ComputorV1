@@ -44,6 +44,7 @@ def CoreParse(equation, left, right):
     print (equation)
     while (i < len(equation)):
 #        print(equation[i])
+        print("")
         string = ""
 
         if (i < len(equation) and equation[i] == '='):
@@ -62,6 +63,8 @@ def CoreParse(equation, left, right):
 #                print(equation[i])
                 string = string + equation[i]
                 i += 1
+
+            print (string)
             count = 0
             if (i < len(equation) and equation[i] != 'x' and equation[i] != 'X' and
                 equation[i] != '*' and equation[i] != '^' and
@@ -69,15 +72,19 @@ def CoreParse(equation, left, right):
                 if (i == len(equation) - 1):
                     if (equal == 0):
                         left._x0 += float(string)
+                        print("left _x0: {}".format(left._x0))
                     if (equal == 1):
                         right._x0 += float(string)
+                        print("right _x0: {}".format(right._x0))
                     break
                 else:
                     if (equal == 0):
                         left._x0 += float(string)
+                        print("left _x0: {}".format(left._x0))
                     if (equal == 1):
                         right._x0 += float(string)
-                    i += 1
+                        print("right _x0: {}".format(right._x0))
+                    #i += 1
                 string = "0"
             
             elif (i < len(equation) and CharIsValide(equation[i])):
@@ -86,45 +93,45 @@ def CoreParse(equation, left, right):
                     count += 1
 
 #            print (count)
-            print (string)
 
             if (count == 1 or count == 2 or count == 3):
                 if (equal == 0):
                     if (equation[i] == '0'):
                         left._x0 += float(string)
-#                        print(left._x0)
+                        print("left _x0: {}".format(left._x0))
                     elif (equation[i] == '1'):
                         left._x1 += float(string)
-#                        print(left._x1)
+                        print("left _x1: {}".format(left._x1))
                     elif (equation[i] == '2'):
                         left._x2 += float(string)
-#                        print(left._x2)
+                        print("left _x2: {}".format(left._x2))
                     else:
                         left._x1 += float(string)
-                        print(left._x1)
+                        print("left _x1: {}".format(left._x1))
 
                 if (equal == 1):
                     if (equation[i] == '0'):
                         right._x0 += float(string)
-#                        print(right._x0)
+                        print("right _x0: {}".format(right._x0))
                     elif (equation[i] == '1'):
                         right._x1 += float(string)
-#                        print(right._x1)
+                        print("right _x1: {}".format(right._x1))
                     elif (equation[i] == '2'):
                         right._x2 += float(string)
-#                        print(right._x2)
+                        print("right _x2: {}".format(right._x2))
                     else:
                         left._x1 += float(string)
-#                        print(right._x1)
+                        print("right _x1: {}".format(right._x1))
 
                 if (i < len(equation)):
                     i += 1
-
             else:
                 if (equal == 0):
                     left._x0 += float(string)
+                    print("left _x0: {}".format(left._x0))
                 if (equal == 1):
                     right._x0 += float(string)
+                    print("right _x0: {}".format(right._x0))
 
 def ParseString(EquationString):
 #    print("Start Parcer! {}".format(EquationString.string))
@@ -136,14 +143,16 @@ def ParseString(EquationString):
         equation = ClearSpace(EquationString.string)
 #        print(equation)
         CoreParse(equation, left, right)
+
         if (left._x0 != 0 or left._x1 != 0 or left._x2 != 0 or right._x0 != 0 or right._x1 != 0 or right._x2 != 0):
-            print("Reduced form: {} + {} * X + {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
+                print("Reduced form: {} + {} * X + {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
+
         else:
             print("all is 0!")
     else:
         print ("Error:  Equation parse: no good character in string enter.")
         print ("        Please use only '0123456789-+= *^xX'")
-        print ("        try:    10* X^0 + 8888 - 666 - 3 * x^1 + 3 x^ 1 = 10")
-        print ("                10* X^0 + 8888 - 666 - 3 * x^1 + 3 x 1")
-        print ("                10* X^0 + 8888 - 666 - 3 * x^1 + 3 ^ 1=")
-        print ("                10* X^0 + 8888 - 666 - 3 * x^1 + 3 * 1 = 0")
+        print ("\ntry:    10* X^0 + 8888 - 666 - 3 * x^1 + 3 x^ 1 = 10")
+        print ("        10* X^0 + 8888 - 666 - 3 * x^1 + 3 x 1")
+        print ("        10* X^0 + 8888 - 666 - 3 * x^1 + 3 ^ 1=")
+        print ("        10* X^0 + 8888 - 666 - 3 * x^1 + 3 * 1 = 0")
