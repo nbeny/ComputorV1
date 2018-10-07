@@ -74,28 +74,34 @@ def CoreParse(equation, left, right):
                 while (i < len(equation) and CharIsValide(equation[i])):
                     i += 1
                     count += 1
-            if ((count == 2 or count == 3) and i < len(equation) and
-                (equation[i] == '0' or equation[i] == '1' or equation[i] == '2')):
+            if (count == 1 or count == 2 or count == 3):
                 if (equal == 0):
-                    if (equation[i] == '0'):
+                    if (i < len(equation) and equation[i] == '0'):
                         left._x0 += float(string)
                         print(left._x0)
-                    if (equation[i] == '1'):
+                    elif (i < len(equation) and equation[i] == '1'):
                         left._x1 += float(string)
                         print(left._x1)
-                    if (equation[i] == '2'):
+                    elif (i < len(equation) and equation[i] == '2'):
                         left._x2 += float(string)
                         print(left._x2)
+                    else:
+                        left._x1 += float(string)
+                        print(left._x1)
+
                 if (equal == 1):
-                    if (equation[i] == '0'):
+                    if (i < len(equation) and equation[i] == '0'):
                         right._x0 += float(string)
                         print(right._x0)
-                    if (equation[i] == '1'):
+                    elif (i < len(equation) and equation[i] == '1'):
                         right._x1 += float(string)
                         print(right._x1)
-                    if (equation[i] == '2'):
+                    elif (i < len(equation) and equation[i] == '2'):
                         right._x2 += float(string)
                         print(right._x2)
+                    else:
+                        left._x1 += float(string)
+                        print(right._x1)
                 if (i < len(equation)):
                     i += 1
             else:
@@ -103,11 +109,6 @@ def CoreParse(equation, left, right):
                         left._x0 += float(string)
                     if (equal == 1):
                         right._x0 += float(string)
-
-    if (left._x0 != 0 or left._x1 != 0 or left._x2 != 0 or right._x0 != 0 or right._x1 != 0 or right._x2 != 0):
-        print("{} + {}x + {}x^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
-    else:
-        print("all is 0!")
 
 def ParseString(EquationString):
     print("Start Parcer! {}".format(EquationString.string))
@@ -118,10 +119,11 @@ def ParseString(EquationString):
         right = Right()
         equation = ClearSpace(EquationString.string)
         print(equation)
-#        try:
         CoreParse(equation, left, right)
-#        except ValueError:
-#            print("Unexpected error: {}".format(ValueError))
+        if (left._x0 != 0 or left._x1 != 0 or left._x2 != 0 or right._x0 != 0 or right._x1 != 0 or right._x2 != 0):
+            print("{} + {}x + {}x^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
+        else:
+            print("all is 0!")
     else:
         print ("Error:  Equation parse: no good character in string enter.")
         print ("        Please use only '0123456789/*-+= ^xX'")

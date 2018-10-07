@@ -2,9 +2,9 @@
 
 class Left:
     def __init__(self):
-        self._x0 = 0
-        self._x1 = 0
-        self._x2 = 0
+        self._x0 = float(0)
+        self._x1 = float(0)
+        self._x2 = float(0)
 
     @property
     def _X0(self):
