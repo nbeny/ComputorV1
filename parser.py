@@ -41,6 +41,7 @@ def CoreParse(equation, left, right):
     i = 0
     string = ""
     equal = 0
+    print (equation)
     while (i < len(equation)):
 #        print(equation[i])
         string = ""
@@ -61,9 +62,11 @@ def CoreParse(equation, left, right):
 #                print(equation[i])
                 string = string + equation[i]
                 i += 1
-            if (i < len(equation) and (equation[i] != 'x' or equation[i] != 'X') and
+            count = 0
+            if (i < len(equation) and equation[i] != 'x' and equation[i] != 'X' and
+                equation[i] != '*' and equation[i] != '^' and
                 (equation[i] == '=' or equation[i] == '+' or equation[i] == '-')):
-                if (i < len(equation)):
+                if (i == len(equation) - 1):
                     if (equal == 0):
                         left._x0 += float(string)
                     if (equal == 1):
@@ -74,39 +77,40 @@ def CoreParse(equation, left, right):
                         left._x0 += float(string)
                     if (equal == 1):
                         right._x0 += float(string)
+                    i += 1
+                string = "0"
             
-            count = 0
-            if (i < len(equation) and CharIsValide(equation[i])):
+            elif (i < len(equation) and CharIsValide(equation[i])):
                 while (i < len(equation) and CharIsValide(equation[i])):
                     i += 1
                     count += 1
-                    
+
 #            print (count)
-#            print (string)
+            print (string)
 
             if (count == 1 or count == 2 or count == 3):
                 if (equal == 0):
-                    if (i < len(equation) and equation[i] == '0'):
+                    if (equation[i] == '0'):
                         left._x0 += float(string)
 #                        print(left._x0)
-                    elif (i < len(equation) and equation[i] == '1'):
+                    elif (equation[i] == '1'):
                         left._x1 += float(string)
 #                        print(left._x1)
-                    elif (i < len(equation) and equation[i] == '2'):
+                    elif (equation[i] == '2'):
                         left._x2 += float(string)
 #                        print(left._x2)
                     else:
                         left._x1 += float(string)
-#                        print(left._x1)
+                        print(left._x1)
 
                 if (equal == 1):
-                    if (i < len(equation) and equation[i] == '0'):
+                    if (equation[i] == '0'):
                         right._x0 += float(string)
 #                        print(right._x0)
-                    elif (i < len(equation) and equation[i] == '1'):
+                    elif (equation[i] == '1'):
                         right._x1 += float(string)
 #                        print(right._x1)
-                    elif (i < len(equation) and equation[i] == '2'):
+                    elif (equation[i] == '2'):
                         right._x2 += float(string)
 #                        print(right._x2)
                     else:
