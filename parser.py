@@ -42,7 +42,7 @@ def CoreParse(equation, left, right):
     string = ""
     equal = 0
     while (i < len(equation)):
-        print(equation[i])
+#        print(equation[i])
         string = ""
 
         if (i < len(equation) and equation[i] == '='):
@@ -85,30 +85,30 @@ def CoreParse(equation, left, right):
                 if (equal == 0):
                     if (i < len(equation) and equation[i] == '0'):
                         left._x0 += float(string)
-                        print(left._x0)
+#                        print(left._x0)
                     elif (i < len(equation) and equation[i] == '1'):
                         left._x1 += float(string)
-                        print(left._x1)
+#                        print(left._x1)
                     elif (i < len(equation) and equation[i] == '2'):
                         left._x2 += float(string)
-                        print(left._x2)
+#                        print(left._x2)
                     else:
                         left._x1 += float(string)
-                        print(left._x1)
+#                        print(left._x1)
 
                 if (equal == 1):
                     if (i < len(equation) and equation[i] == '0'):
                         right._x0 += float(string)
-                        print(right._x0)
+#                        print(right._x0)
                     elif (i < len(equation) and equation[i] == '1'):
                         right._x1 += float(string)
-                        print(right._x1)
+#                        print(right._x1)
                     elif (i < len(equation) and equation[i] == '2'):
                         right._x2 += float(string)
-                        print(right._x2)
+#                        print(right._x2)
                     else:
                         left._x1 += float(string)
-                        print(right._x1)
+#                        print(right._x1)
 
                 if (i < len(equation)):
                     i += 1
@@ -120,19 +120,23 @@ def CoreParse(equation, left, right):
                     right._x0 += float(string)
 
 def ParseString(EquationString):
-    print("Start Parcer! {}".format(EquationString.string))
+#    print("Start Parcer! {}".format(EquationString.string))
     if (EquationFormatOk(EquationString.string, EquationString.charListOk)):
-        print("String have the good format.")
-        print("Start identifier!")
+#        print("String have the good format.")
+#        print("Start identifier!")
         left = Left()
         right = Right()
         equation = ClearSpace(EquationString.string)
-        print(equation)
+#        print(equation)
         CoreParse(equation, left, right)
         if (left._x0 != 0 or left._x1 != 0 or left._x2 != 0 or right._x0 != 0 or right._x1 != 0 or right._x2 != 0):
-            print("{} + {}x + {}x^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
+            print("Reduced form: {} + {} * X + {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
         else:
             print("all is 0!")
     else:
         print ("Error:  Equation parse: no good character in string enter.")
-        print ("        Please use only '0123456789/*-+= ^xX'")
+        print ("        Please use only '0123456789-+= *^xX'")
+        print ("        try:    10* X^0 + 8888 - 666 - 3 * x^1 + 3 x^ 1 = 10")
+        print ("                10* X^0 + 8888 - 666 - 3 * x^1 + 3 x 1")
+        print ("                10* X^0 + 8888 - 666 - 3 * x^1 + 3 ^ 1=")
+        print ("                10* X^0 + 8888 - 666 - 3 * x^1 + 3 * 1 = 0")

@@ -9,10 +9,10 @@ def main(argv):
 
     if (len(argv) == 1):
         EquationString.String = input("Entrez une equation: ")
-        print (EquationString.String)
+#        print (EquationString.String)
     elif (len(argv) == 2) :
         EquationString.String = argv[1]
-        print (EquationString.String)
+#        print (EquationString.String)
     else :
         print("usage:   python ./main.py")
         print("         python ./main.py [equation]")
