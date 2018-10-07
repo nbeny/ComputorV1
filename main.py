@@ -17,7 +17,24 @@ def main(argv):
         print("usage:   python ./main.py")
         print("         python ./main.py [equation]")
         return -1
-    ParseString(EquationString)
+    
+    if (EquationString.String[len(EquationString.String) - 1]  == 't' and
+        EquationString.String[len(EquationString.String) - 2]  == 's' and
+        EquationString.String[len(EquationString.String) - 3]  == 'e' and
+        EquationString.String[len(EquationString.String) - 4]  == 't' and
+        EquationString.String[len(EquationString.String) - 5]  == '.'):
+        path = EquationString.String
+        try:
+            with open(path) as end:
+                for line in end:
+                    print(line.rstrip())
+                    EquationString.String = line.rstrip()
+                    ParseString(EquationString)
+        except:
+            print("Error: file not found!")
+    
+    else:
+        ParseString(EquationString)
 
 if  __name__ == '__main__':
     main(argv)
