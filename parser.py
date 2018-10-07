@@ -44,19 +44,24 @@ def CoreParse(equation, left, right):
     while (i < len(equation)):
         print(equation[i])
         string = ""
+
         if (i < len(equation) and equation[i] == '='):
             equal = 1
             i += 1
+
         if (i < len(equation) and equation[i] == '+'):
             i += 1
+
         if (i < len(equation) and equation[i] == '-'):
             string = "-"
             i += 1
+
         if (i < len(equation) and equation[i] >= '0' and equation[i] <= '9'):
             while (i < len(equation) and equation[i] >= '0' and equation[i] <= '9'):
 #                print(equation[i])
                 string = string + equation[i]
                 i += 1
+
             if (i < len(equation) and (i == len(equation) - 1 or equation[i] == '=' or equation[i] == '+' or equation[i] == '-')):
                 if (i == len(equation) - 1):
                     if (equal == 0):
@@ -69,11 +74,13 @@ def CoreParse(equation, left, right):
                         left._x0 += float(string)
                     if (equal == 1):
                         right._x0 += float(string)
+
             count = 0
             if (i < len(equation) and CharIsValide(equation[i])):
                 while (i < len(equation) and CharIsValide(equation[i])):
                     i += 1
                     count += 1
+
             if (count == 1 or count == 2 or count == 3):
                 if (equal == 0):
                     if (i < len(equation) and equation[i] == '0'):
@@ -102,13 +109,15 @@ def CoreParse(equation, left, right):
                     else:
                         left._x1 += float(string)
                         print(right._x1)
+
                 if (i < len(equation)):
                     i += 1
+
             else:
-                    if (equal == 0):
-                        left._x0 += float(string)
-                    if (equal == 1):
-                        right._x0 += float(string)
+                if (equal == 0):
+                    left._x0 += float(string)
+                if (equal == 1):
+                    right._x0 += float(string)
 
 def ParseString(EquationString):
     print("Start Parcer! {}".format(EquationString.string))
