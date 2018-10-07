@@ -80,8 +80,10 @@ def CoreParse(equation, left, right):
                 while (i < len(equation) and CharIsValide(equation[i])):
                     i += 1
                     count += 1
+                    
 #            print (count)
 #            print (string)
+
             if (count == 1 or count == 2 or count == 3):
                 if (equal == 0):
                     if (i < len(equation) and equation[i] == '0'):
