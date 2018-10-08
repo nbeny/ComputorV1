@@ -2,6 +2,7 @@
 
 from left import Left
 from right import Right
+from resolution import ResolutionParser
 
 def CharFormatOk(CharString, CharListOk):
     i = 0
@@ -145,8 +146,8 @@ def ParseString(EquationString):
         CoreParse(equation, left, right)
 
         if (left._x0 != 0 or left._x1 != 0 or left._x2 != 0 or right._x0 != 0 or right._x1 != 0 or right._x2 != 0):
-                print("Reduced form: {} + {} * X + {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
-
+            print("Reduced form: {} + {} * X + {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
+            ResolutionParser(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2)
         else:
             print("all is 0!")
     else:
