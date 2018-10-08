@@ -3,6 +3,7 @@
 def ResolutionParser(x0, x1, x2):
     if (x2 != 0):
         print("The solution is of degree 2")
+        
     elif (x1 != 0):
         print("The solution is of degree 1")
         x = -x0 / x1
