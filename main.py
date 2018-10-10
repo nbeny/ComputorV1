@@ -32,7 +32,6 @@ def main(argv):
                     ParseString(EquationString)
         except:
             print("Error: file not found!")
-    
     else:
         ParseString(EquationString)
 
