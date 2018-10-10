@@ -162,5 +162,5 @@ def ParseString(EquationString):
         print ("        Please use only '0123456789-+= *^xX'")
         print ("\ntry:    10* X^0 + 8888 - 666 - 3 * x^1 + 3 x^ 1 = 10")
         print ("        10* X^0 + 8888 - 666 - 3 * x^1 + 3 x 1")
-        print ("        10* X^0 + 8888 - 666 - 3 * x^1 + 3 ^ 1=")
-        print ("        10* X^0 + 8888 - 666 - 3 * x^1 + 3 * 1 = 0")
+        print ("        10* X^0 + 8888 - 666 - 3 * x^1 + 3 ^11=")
+        print ("        10 000* X^0 + 8888 - 666 - 3 * x^1 + 3 * 1 = 0")

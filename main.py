@@ -6,7 +6,21 @@ from parser import ParseString
 
 def main(argv):
     EquationString = Equation()
-
+    print('_________________________________________')
+    print('                             _______     |\\\\     V0.1  DoctorDJO')
+    print('                            |License|    | \\\\')
+    print('  _____                     | ~~*~~ |    |  \\\\')
+    print(' |     |  (((        .--.   |_______|    |')
+    print(' |DrDJO| ~OvO~ __   (////)               |       The only possibility of calcul is \'+\' and \'-\'.')
+    print(' |     | ( _ )|==|   \\__/                |       * is accepted but will apply an error or a power.')
+    print(' |o    |  \\_/ |_(|  /    \\   _______     |')
+    print(' |     | //|\\\\   \\\\//|  |\\\\  |__o__|     |')
+    print(' |   __|//\\_/\\\\ __\\/ |__|//  |__o__|     |')
+    print(' |  |==""//=\\\\""====|||||)   |__o__|     |')
+    print('_|__||_|_||_||_____||||||____|__o__|_____|')
+    print('    ||  (_) (_)    ||||||                \\')
+    print('    []             [(_)(_)')
+    print('')
     if (len(argv) == 1):
         EquationString.String = input("Entrez une equation: ")
 #        print (EquationString.String)

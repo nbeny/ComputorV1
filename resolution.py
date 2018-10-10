@@ -19,13 +19,13 @@ def ResolutionParser(x0, x1, x2):
             if (Real1 >= 0):
                 print("x1 = {}i + {}".format(Imaginary1, Real1))
             else:
-                print("x1 = {}i - {}".format(Imaginary1, Real1))
+                print("x1 = {}i - {}".format(Imaginary1, -Real1))
             Real2 = -x1 / 6
             Imaginary2 = math.sqrt(-Delta)
             if (Real2 >= 0):
                 print("x2 = {}i + {}".format(Imaginary2, Real2))
             else:
-                print("x2 = {}i - {}".format(Imaginary2, Real2))
+                print("x2 = {}i - {}".format(Imaginary2, -Real2))
         else:
             print("Δ = {}               Δ < 0\nThe equation get a real solution x0:".format(Delta))
             Solution = -x1 / (2 * x2)
