@@ -30,6 +30,7 @@ def main(argv):
     else :
         print("usage:   python ./main.py")
         print("         python ./main.py [equation]")
+        print("         python ./main.py [file.test]")
         return -1
     
     if (EquationString.String[len(EquationString.String) - 1]  == 't' and
