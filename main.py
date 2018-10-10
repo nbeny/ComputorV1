@@ -45,6 +45,7 @@ def main(argv):
                     print(line.rstrip())
                     EquationString.String = line.rstrip()
                     ParseString(EquationString)
+                    print("")
         except:
             print("Error: file not found!")
     else:
