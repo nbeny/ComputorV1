@@ -156,11 +156,6 @@ def ParseString(EquationString):
             print("Reduced form: {} + {} * X + {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
             ResolutionParser(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2)
         else:
-            print("all is 0!")
+            print("The equation have 0 value.")
     else:
-        print ("Error:  Equation parse: no good character in string enter.")
-        print ("        Please use only '0123456789-+= *^xX'")
-        print ("\ntry:    10* X^0 + 8888 - 666 - 3 * x^1 + 3 x^ 1 = 10")
-        print ("        10* X^0 + 8888 - 666 - 3 * x^1 + 3 x 1")
-        print ("        10* X^0 + 8888 - 666 - 3 * x^1 + 3 ^11=")
-        print ("        10 000* X^0 + 8888 - 666 - 3 * x^1 + 3 * 1 = 0")
+        print ("Error:  Equation parse: no good character in string enter. Please use only '0123456789-+= *^xX'")
