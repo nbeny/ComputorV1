@@ -96,40 +96,51 @@ def CoreParse(equation, left, right):
 #            print (count)
 
             if (i < len(equation) and (count == 1 or count == 2 or count == 3) and
-                equation[i] >= '0' and equation[i] <= '2'):
+                (equation[i] == '0' or equation[i] == '1' or equation[i] == '2' or equation[i] == '-' or equation[i] == '+' or equation[i] == '=')):
                 if (equal == 0):
                     if (equation[i] == '0'):
                         left._x0 += float(string)
 #                        print("left _x0: {}".format(left._x0))
+                        i += 1
                     elif (equation[i] == '1'):
                         left._x1 += float(string)
 #                        print("left _x1: {}".format(left._x1))
+                        i += 1
                     elif (equation[i] == '2'):
                         left._x2 += float(string)
 #                        print("left _x2: {}".format(left._x2))
+                        i += 1
                     else:
                         left._x1 += float(string)
 #                        print("left _x1: {}".format(left._x1))
-
+                
                 if (equal == 1):
                     if (equation[i] == '0'):
                         right._x0 += float(string)
 #                        print("right _x0: {}".format(right._x0))
+                        i += 1
                     elif (equation[i] == '1'):
                         right._x1 += float(string)
 #                        print("right _x1: {}".format(right._x1))
+                        i += 1
                     elif (equation[i] == '2'):
                         right._x2 += float(string)
 #                        print("right _x2: {}".format(right._x2))
+                        i += 1
                     else:
                         left._x1 += float(string)
 #                        print("right _x1: {}".format(right._x1))
+
 #                if (i < len(equation)):
 #                    i += 1
             elif ((count == 1 or count == 2 or count == 3) and
-                equation[i] < '0' and equation[i] > '2'):
-                print("The power is incorrect.\n check you're equation.")
-                exit()
+                i == len(equation)):
+                if (equal == 0):
+                    left._x1 += float(string)
+#                    print("left _x0: {}".format(left._x0))
+                if (equal == 1):
+                    right._x1 += float(string)
+#                    print("right _x0: {}".format(right._x0))
             elif (count == 0):
                 if (equal == 0):
                     left._x0 += float(string)
@@ -139,6 +150,9 @@ def CoreParse(equation, left, right):
 #                    print("right _x0: {}".format(right._x0))
             else:
                 print("Error: Check format of equation. Degrees accepted is 0, 1 and 2 only.")
+                print (string)
+                print (equation[i])
+                print(count)
                 exit()
 
 def ParseString(EquationString):
@@ -153,7 +167,14 @@ def ParseString(EquationString):
         CoreParse(equation, left, right)
 
         if (left._x0 != 0 or left._x1 != 0 or left._x2 != 0 or right._x0 != 0 or right._x1 != 0 or right._x2 != 0):
-            print("Reduced form: {} + {} * X + {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
+            if ((left._x1 - right._x1) < 0 and (left._x2 - right._x2) < 0):
+                print("Reduced form: {} - {} * X - {} * X^2 = 0".format(left._x0 - right._x0, -(left._x1 - right._x1), -(left._x2 - right._x2)))
+            if ((left._x1 - right._x1) < 0 and (left._x2 - right._x2) > 0):
+                print("Reduced form: {} - {} * X + {} * X^2 = 0".format(left._x0 - right._x0, -(left._x1 - right._x1), left._x2 - right._x2))
+            if ((left._x1 - right._x1) > 0 and (left._x2 - right._x2) < 0):
+                print("Reduced form: {} + {} * X - {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, -(left._x2 - right._x2)))
+            if ((left._x1 - right._x1) > 0 and (left._x2 - right._x2) > 0):
+                print("Reduced form: {} + {} * X + {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
             ResolutionParser(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2)
         else:
             print("The equation have 0 value.")
