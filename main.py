@@ -12,7 +12,7 @@ def main(argv):
     print('  _____                     |equation|    |  \\\\')
     print(' |     |  (((        .--.   |________|    |')
     print(' |DrDJO| ~OvO~ __   (////)                |       The only possibility of calcul is \'+\' and \'-\'.')
-    print(' |     | ( _ )|==|   \\__/                 |       * is accepted but will apply an error or a power.')
+    print(' |     | ( _ )|==|   \\__/                 |       * is accepted but will apply an error or a power of.')
     print(' |o    |  \\_/ |_(|  /    \\   _______      |')
     print(' |     | //|\\\\   \\\\//|  |\\\\  |__o__|      |')
     print(' |   __|//\\_/\\\\ __\\/ |__|//  |__o__|      |')
