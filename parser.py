@@ -146,9 +146,11 @@ def CoreParse(equation, left, right):
                     else:
                         left._x1 += float(string)
 #                        print("right _x1: {}".format(right._x1))
+                if (i < len(equation) and ((equation[i] >= '0' and equation[i] <= '9') or equation[i] == '.')):
+                    print("Error: Check format of equation. Degrees accepted is 0, 1 and 2 only.")
+                    print (equation)
+                    exit()
 
-#                if (i < len(equation)):
-#                    i += 1
             elif ((count == 1 or count == 2 or count == 3) and
                 i == len(equation)):
                 if (equal == 0):
@@ -238,9 +240,11 @@ def CoreParse(equation, left, right):
                     else:
                         left._x1 += float(string)
 #                        print("right _x1: {}".format(right._x1))
+                if (i < len(equation) and ((equation[i] >= '0' and equation[i] <= '9') or equation[i] == '.')):
+                    print("Error: Check format of equation. Degrees accepted is 0, 1 and 2 only.")
+                    print (equation)
+                    exit()
 
-#                if (i < len(equation)):
-#                    i += 1
             elif ((count == 1 or count == 2 or count == 3) and
                 i == len(equation)):
                 if (equal == 0):
@@ -278,11 +282,11 @@ def ParseString(EquationString):
         if (left._x0 != 0 or left._x1 != 0 or left._x2 != 0 or right._x0 != 0 or right._x1 != 0 or right._x2 != 0):
             if ((left._x1 - right._x1) < 0 and (left._x2 - right._x2) < 0):
                 print("Reduced form: {} - {} * X - {} * X^2 = 0".format(left._x0 - right._x0, -(left._x1 - right._x1), -(left._x2 - right._x2)))
-            if ((left._x1 - right._x1) < 0 and (left._x2 - right._x2) > 0):
+            if ((left._x1 - right._x1) < 0 and (left._x2 - right._x2) >= 0):
                 print("Reduced form: {} - {} * X + {} * X^2 = 0".format(left._x0 - right._x0, -(left._x1 - right._x1), left._x2 - right._x2))
-            if ((left._x1 - right._x1) > 0 and (left._x2 - right._x2) < 0):
+            if ((left._x1 - right._x1) >= 0 and (left._x2 - right._x2) < 0):
                 print("Reduced form: {} + {} * X - {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, -(left._x2 - right._x2)))
-            if ((left._x1 - right._x1) > 0 and (left._x2 - right._x2) > 0):
+            if ((left._x1 - right._x1) >= 0 and (left._x2 - right._x2) >= 0):
                 print("Reduced form: {} + {} * X + {} * X^2 = 0".format(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2))
             ResolutionParser(left._x0 - right._x0, left._x1 - right._x1, left._x2 - right._x2)
         else:
